@@ -13,72 +13,80 @@ class _AuthScreenState extends State<AuthScreen> {
     return SafeArea(
       child: Scaffold(
         body: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                RichText(
-                  text: TextSpan(
-                    text: 'Everyone has\n'.toUpperCase(),
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 30.0,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      text: 'Everyone has\n'.toUpperCase(),
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 30.0,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: 'knowledge\n'.toUpperCase(),
+                          style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(text: 'to share.'.toLowerCase()),
+                      ],
                     ),
-                    children: [
-                      TextSpan(
-                        text: 'knowledge\n'.toUpperCase(),
-                        style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(text: 'to share.'.toLowerCase()),
-                    ],
                   ),
-                ),
-                const Text(
-                  'It all starts here.',
-                  style: TextStyle(fontStyle: FontStyle.italic),
-                ),
-                const SizedBox(
-                  height: 50.0,
-                ),
-                Form(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const Text('Enter your email'),
-                      const SizedBox(
-                        height: 10.0,
-                      ),
-                      TextFormField(
-                        decoration: InputDecoration(
-                            hintText: 'ex: john.doe@domain.tld',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(0.0),
-                              borderSide: const BorderSide(color: Colors.grey),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(0.0),
-                              borderSide: const BorderSide(color: Colors.grey),
-                            )),
-                      ),
-                      const SizedBox(
-                        height: 10.0,
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 15.0),
-                          elevation: 0,
-                        ),
-                        onPressed: () => print('send'),
-                        child: Text(
-                          'continue'.toUpperCase(),
-                        ),
-                      )
-                    ],
+                  const SizedBox(
+                    height: 10.0,
                   ),
-                )
-              ],
+                  const Text(
+                    'It all starts here.',
+                    style: TextStyle(fontStyle: FontStyle.italic),
+                  ),
+                  const SizedBox(
+                    height: 50.0,
+                  ),
+                  Form(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const Text('Enter your email'),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        TextFormField(
+                          decoration: InputDecoration(
+                              hintText: 'ex: john.doe@domain.tld',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(0.0),
+                                borderSide:
+                                    const BorderSide(color: Colors.grey),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(0.0),
+                                borderSide:
+                                    const BorderSide(color: Colors.grey),
+                              )),
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(vertical: 15.0),
+                            elevation: 0,
+                          ),
+                          onPressed: () => print('send'),
+                          child: Text(
+                            'continue'.toUpperCase(),
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
