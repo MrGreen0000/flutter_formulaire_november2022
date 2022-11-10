@@ -28,8 +28,23 @@ class _TermScreenState extends State<TermScreen> {
             onPressed: () {},
           ),
         ),
-        body: const Center(
-          child: Text('coucou'),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Text(
+                'Proident Lorem nisi eu ex fugiat minim consequat. Dolore Lorem tempor exercitation anim aliquip eiusmod aliquip nisi ipsum commodo quis. Do incididunt ullamco pariatur quis minim deserunt dolor.\n\nAliqua ipsum nisi qui pariatur duis deserunt ut dolore mollit exercitation. Aliqua do sunt proident cupidatat nulla ullamco enim Lorem. Ut nulla cillum ad deserunt duis non aliqua.Proident Lorem nisi eu ex fugiat minim consequat. Dolore Lorem tempor exercitation anim aliquip eiusmod aliquip nisi ipsum commodo quis. Do incididunt ullamco pariatur quis minim deserunt dolor. Aliqua ipsum nisi qui pariatur duis deserunt ut dolore mollit exercitation. Aliqua do sunt proident cupidatat nulla ullamco enim Lorem. Ut nulla cillum ad deserunt duis non aliqua.Proident Lorem nisi eu ex fugiat minim consequat. Dolore Lorem tempor exercitation anim aliquip eiusmod aliquip nisi ipsum commodo quis. Do incididunt ullamco pariatur quis minim deserunt dolor. Aliqua ipsum nisi qui pariatur duis deserunt ut dolore mollit exercitation. Aliqua do sunt proident cupidatat nulla ullamco enim Lorem. Ut nulla cillum ad deserunt duis non aliqua.Proident Lorem nisi eu ex fugiat minim consequat.\n\nDolore Lorem tempor exercitation anim aliquip eiusmod aliquip nisi ipsum commodo quis. Do incididunt ullamco pariatur quis minim deserunt dolor. Aliqua ipsum nisi qui pariatur duis deserunt ut dolore mollit exercitation. Aliqua do sunt proident cupidatat nulla ullamco enim Lorem. Ut nulla cillum ad deserunt duis non aliqua.Proident Lorem nisi eu ex fugiat minim consequat. Dolore Lorem tempor exercitation anim aliquip eiusmod aliquip nisi ipsum commodo quis. Do incididunt ullamco pariatur quis minim deserunt dolor. Aliqua ipsum nisi qui pariatur duis deserunt ut dolore mollit exercitation. Aliqua do sunt proident cupidatat nulla ullamco enim Lorem.\n\nUt nulla cillum ad deserunt duis non aliqua.Proident Lorem nisi eu ex fugiat minim consequat. Dolore Lorem tempor exercitation anim aliquip eiusmod aliquip nisi ipsum commodo quis. Do incididunt ullamco pariatur quis minim deserunt dolor. Aliqua ipsum nisi qui pariatur duis deserunt ut dolore mollit exercitation. Aliqua do sunt proident cupidatat nulla ullamco enim Lorem. Ut nulla cillum ad deserunt duis non aliqua.Proident Lorem nisi eu ex fugiat minim consequat. Dolore Lorem tempor exercitation anim aliquip eiusmod aliquip nisi ipsum commodo quis. Do incididunt ullamco pariatur quis minim deserunt dolor. Aliqua ipsum nisi qui pariatur duis deserunt ut dolore mollit exercitation. Aliqua do sunt proident cupidatat nulla ullamco enim Lorem. Ut nulla cillum ad deserunt duis non aliqua.Proident Lorem nisi eu ex fugiat minim consequat. Dolore Lorem tempor exercitation anim aliquip eiusmod aliquip nisi ipsum commodo quis. Do incididunt ullamco pariatur quis minim deserunt dolor. Aliqua ipsum nisi qui pariatur duis deserunt ut dolore mollit exercitation. Aliqua do sunt proident cupidatat nulla ullamco enim Lorem. Ut nulla cillum ad deserunt duis non aliqua.Proident Lorem nisi eu ex fugiat minim consequat. Dolore Lorem tempor exercitation anim aliquip eiusmod aliquip nisi ipsum commodo quis. Do incididunt ullamco pariatur quis minim deserunt dolor.',
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              ElevatedButton(
+                onPressed: () => print('accept'),
+                child: Text(
+                  'accept & continue'.toUpperCase(),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

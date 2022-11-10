@@ -81,7 +81,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           child: Text(
                             'continue'.toUpperCase(),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   )
