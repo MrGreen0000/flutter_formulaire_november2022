@@ -1,49 +1,43 @@
 import 'package:flutter/material.dart';
 
-class AuthScreen extends StatefulWidget {
-  const AuthScreen({super.key});
+class PasswordScreen extends StatefulWidget {
+  const PasswordScreen({super.key});
 
   @override
-  State<AuthScreen> createState() => _AuthScreenState();
+  State<PasswordScreen> createState() => _PasswordScreenState();
 }
 
-class _AuthScreenState extends State<AuthScreen> {
+class _PasswordScreenState extends State<PasswordScreen> {
+  bool _isSecret = true;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          titleSpacing: 0.0,
+          elevation: 0.0,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+            ),
+            color: Colors.black,
+            onPressed: () {},
+          ),
+        ),
         body: Center(
           child: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(
               horizontal: 30.0,
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                RichText(
-                  text: TextSpan(
-                    text: 'Everyone has\n'.toUpperCase(),
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 30.0,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: 'knowledge\n'.toUpperCase(),
-                        style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(text: 'to share.'.toLowerCase()),
-                    ],
+                Text(
+                  'password'.toUpperCase(),
+                  style: const TextStyle(
+                    fontSize: 30.0,
                   ),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                const Text(
-                  'It all starts here.',
-                  style: TextStyle(fontStyle: FontStyle.italic),
                 ),
                 const SizedBox(
                   height: 50.0,
@@ -52,13 +46,20 @@ class _AuthScreenState extends State<AuthScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const Text('Enter your email'),
+                      const Text('Enter your password'),
                       const SizedBox(
                         height: 10.0,
                       ),
                       TextFormField(
+                        obscureText: _isSecret,
                         decoration: InputDecoration(
-                            hintText: 'Ex: john.doe@domain.tld',
+                            suffixIcon: InkWell(
+                              onTap: () => debugPrint('change'),
+                              child: Icon(!_isSecret
+                                  ? Icons.visibility
+                                  : Icons.visibility_off),
+                            ),
+                            hintText: 'Ex: gh!D4Yhd  ',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(0.0),
                               borderSide: const BorderSide(color: Colors.grey),
