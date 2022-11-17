@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
 
 class AuthScreen extends StatefulWidget {
-  const AuthScreen({super.key});
+  final Function(int) onChangedStep;
+  const AuthScreen({super.key, required this.onChangedStep});
 
   @override
   State<AuthScreen> createState() => _AuthScreenState();
 }
 
 class _AuthScreenState extends State<AuthScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final RegExp emailRegex = RegExp(r"[a-z0-9\._-]+@[a-z0-9\._-]+\.[a-z]+");
+
+  String? _email;
+
+  @override
+  void initState() {
+    _email = "jhon.doe@gmail.com";
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -49,6 +61,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   height: 50.0,
                 ),
                 Form(
+                  key: _formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -57,16 +70,22 @@ class _AuthScreenState extends State<AuthScreen> {
                         height: 10.0,
                       ),
                       TextFormField(
+                        onChanged: (value) => setState(() => _email = value),
+                        validator: (value) =>
+                            value!.isEmpty || emailRegex.hasMatch(value)
+                                ? 'Please enter a valid email'
+                                : null,
                         decoration: InputDecoration(
-                            hintText: 'Ex: john.doe@domain.tld',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(0.0),
-                              borderSide: const BorderSide(color: Colors.grey),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(0.0),
-                              borderSide: const BorderSide(color: Colors.grey),
-                            )),
+                          hintText: 'Ex: john.doe@domain.tld',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(0.0),
+                            borderSide: const BorderSide(color: Colors.grey),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(0.0),
+                            borderSide: const BorderSide(color: Colors.grey),
+                          ),
+                        ),
                       ),
                       const SizedBox(
                         height: 10.0,
@@ -76,7 +95,14 @@ class _AuthScreenState extends State<AuthScreen> {
                           padding: const EdgeInsets.symmetric(vertical: 15.0),
                           elevation: 0,
                         ),
-                        onPressed: () => debugPrint('send'),
+                        onPressed: !emailRegex.hasMatch(_email!)
+                            ? null
+                            : () {
+                                if (_formKey.currentState!.validate()) {
+                                  debugPrint(_email);
+                                  // widget.onChangedStep(1);
+                                }
+                              },
                         child: Text(
                           'continue'.toUpperCase(),
                         ),

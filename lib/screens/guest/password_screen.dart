@@ -8,7 +8,15 @@ class PasswordScreen extends StatefulWidget {
 }
 
 class _PasswordScreenState extends State<PasswordScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String? _password;
   bool _isSecret = true;
+
+  @override
+  void initState() {
+    _password = "gh!D4Yhd";
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +51,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                   height: 50.0,
                 ),
                 Form(
+                  key: _formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -51,10 +60,15 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         height: 10.0,
                       ),
                       TextFormField(
+                        onChanged: (value) => setState(() => _password = value),
+                        validator: (value) => value!.length < 6
+                            ? 'Enter a passwords. 6 caracters min required.'
+                            : null,
                         obscureText: _isSecret,
                         decoration: InputDecoration(
                             suffixIcon: InkWell(
-                              onTap: () => debugPrint('change'),
+                              onTap: () =>
+                                  setState(() => _isSecret = !_isSecret),
                               child: Icon(!_isSecret
                                   ? Icons.visibility
                                   : Icons.visibility_off),
@@ -77,7 +91,13 @@ class _PasswordScreenState extends State<PasswordScreen> {
                           padding: const EdgeInsets.symmetric(vertical: 15.0),
                           elevation: 0,
                         ),
-                        onPressed: () => debugPrint('send'),
+                        onPressed: _password!.length < 6
+                            ? null
+                            : () {
+                                if (_formKey.currentState!.validate()) {
+                                  debugPrint(_password);
+                                }
+                              },
                         child: Text(
                           'continue'.toUpperCase(),
                         ),
